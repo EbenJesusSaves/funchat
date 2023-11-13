@@ -3,6 +3,9 @@ import react from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Call } from '../../screens/Call';
 import { Chat } from '../../screens/Chat';
+import { Group } from '../../screens/Group';
+import { Settings } from '../../screens/Settings';
+import { theme } from '../../components/theme';
 
 
 
@@ -17,23 +20,31 @@ export default function ButtonTabNavigation() {
                 tabBarIcon: ({ focused, color, size }) => {
                     let iconName;
 
-                    if (route.name === 'Home') {
+                    if (route.name === 'Chat') {
                         iconName = focused
-                            ? 'ios-information-circle'
-                            : 'ios-information-circle-outline';
-                    } else if (route.name === 'Settings') {
-                        iconName = focused ? 'ios-list' : 'ios-list-outline';
+                            ? 'chatbubble-ellipses-sharp'
+                            : 'chatbubble-ellipses-outline';
+                    } else if (route.name === 'Call') {
+                        iconName = focused ? 'call' : 'call-outline';
+                    }
+                    else if (route.name === 'Group') {
+                        iconName = focused ? 'people' : 'people-outline';
+                    }
+                    else if (route.name === 'Settings') {
+                        iconName = focused ? 'settings' : 'settings-outline';
                     }
 
                     // You can return any component that you like here!
                     return <Ionicons name={iconName} size={size} color={color} />;
                 },
-                tabBarActiveTintColor: 'tomato',
+                tabBarActiveTintColor: theme.colors.primaryBlue,
                 tabBarInactiveTintColor: 'gray',
             })}
         >
-            <Tab.Screen name="Home" component={Call} />
-            <Tab.Screen name="Settings" component={Chat} />
+            <Tab.Screen name="Chat" component={Call} />
+            <Tab.Screen name="Call" component={Chat} />
+            <Tab.Screen name="Group" component={Group} />
+            <Tab.Screen name="Settings" component={Settings} />
         </Tab.Navigator>
 
     );

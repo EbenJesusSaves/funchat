@@ -8,3 +8,7 @@ const colors = {
     red: '#f95555',
     pail: "#a2ffdb"
 }
+
+export const theme = {
+    colors
+}
