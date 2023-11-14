@@ -6,6 +6,8 @@ import { Chat } from '../../screens/Chat';
 import { Group } from '../../screens/Group';
 import { Settings } from '../../screens/Settings';
 import { theme } from '../../components/theme';
+import { View } from 'react-native';
+import { Create } from '../../screens/Create';
 
 
 
@@ -15,14 +17,19 @@ export default function ButtonTabNavigation() {
 
     return (
         <Tab.Navigator
-            tabBarOptions={{
-                style: {
 
-                }
-            }}
             screenOptions={({ route }) => ({
                 headerShown: false,
-                tabBarStyle: {},
+                tabBarStyle: {
+                    position: 'absolute',
+                    bottom: 10,
+                    right: 10,
+                    left: 10,
+                    borderRadius: 15,
+                    padding: 5,
+
+
+                },
                 tabBarIcon: ({ focused, color, size }) => {
                     let iconName;
 
@@ -49,6 +56,25 @@ export default function ButtonTabNavigation() {
         >
             <Tab.Screen name="Chat" component={Call} />
             <Tab.Screen name="Call" component={Chat} />
+            <Tab.Screen name="Create" component={Create}
+
+                options={{
+                    tabBarIcon: ({ focused }) => (
+                        <View style={{
+                            backgroundColor: theme.colors.primaryBlue,
+                            top: -20,
+                            height: 40,
+                            width: 40,
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            borderRadius: 50
+
+                        }}>
+                            <Ionicons name='pencil' size={20} color='#ffff' />
+                        </View>),
+
+                }}
+            />
             <Tab.Screen name="Group" component={Group} />
             <Tab.Screen name="Settings" component={Settings} />
         </Tab.Navigator>
