@@ -15,8 +15,14 @@ export default function ButtonTabNavigation() {
 
     return (
         <Tab.Navigator
+            tabBarOptions={{
+                style: {
+
+                }
+            }}
             screenOptions={({ route }) => ({
                 headerShown: false,
+                tabBarStyle: {},
                 tabBarIcon: ({ focused, color, size }) => {
                     let iconName;
 
